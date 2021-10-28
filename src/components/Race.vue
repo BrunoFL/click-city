@@ -64,5 +64,6 @@ button {
   border: 2px solid black;
   width: 100px;
   height: 30px;
+  margin: 10px;
 }
 </style>
