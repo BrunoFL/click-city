@@ -4,7 +4,8 @@
 
     <div class="race" v-if="clients.length > 0">
       <div v-for="client in clients" :key="client.id">
-        <span v-if="isMyId(client.id)">👉</span>
+        <span v-if="isMyId(client.id)">👉 </span>
+        <span v-if="!isMyId(client.id)">💣 </span>
         <progress class="racer" v-bind:value="client.value" max="100" min="0" />
       </div>
     </div>
@@ -35,6 +36,9 @@ export default {
      * 👂 Listen to socket events emitted from the socket server
      */
     update_clients(clients) {
+      clients.sort((a, b) => {
+        return a.value < b.value;
+      });
       this.clients = clients;
     },
   },
