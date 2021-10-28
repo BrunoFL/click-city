@@ -7,7 +7,11 @@
       style="opacity: 0.5"
     />
     <ul v-if="clients.length > 0">
-      <li v-for="client in clients" :key="client.id" v-html="client.id" />
+      <li
+        v-for="client in clients"
+        :key="client.id"
+        v-html="client.pseudo || client.id"
+      />
     </ul>
   </div>
 </template>

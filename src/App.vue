@@ -1,6 +1,7 @@
 <template>
   <div id="app">
     <img alt="Vue logo" src="./assets/logo.png" />
+    <Pseudo />
     <ClientList />
     <Race />
   </div>
@@ -8,6 +9,7 @@
 
 <script>
 import ClientList from "./components/ClientList";
+import Pseudo from "./components/Pseudo.vue";
 import Race from "./components/Race";
 
 export default {
@@ -15,6 +17,7 @@ export default {
   components: {
     ClientList,
     Race,
+    Pseudo,
   },
   sockets: {
     connect() {

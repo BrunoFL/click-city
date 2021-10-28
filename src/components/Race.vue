@@ -1,7 +1,6 @@
 <template>
   <div id="race">
     <button v-on:click="increment">+1</button>
-
     <div class="race" v-if="clients.length > 0">
       <div v-for="client in clients" :key="client.id">
         <span v-if="isMyId(client.id)">👉 </span>
