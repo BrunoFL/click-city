@@ -49,10 +49,12 @@ export default {
      * 👂 Listen to socket events emitted from the socket server
      */
     update_clients(clients) {
+      console.log(clients);
       clients.sort((a, b) => {
-        return a.value < b.value;
+        return b.value - a.value;
       });
       this.clients = clients;
+      console.log(clients);
     },
   },
 };
