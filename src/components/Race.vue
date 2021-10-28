@@ -1,11 +1,22 @@
 <template>
-  <div id="race">
-    <button v-on:click="increment">+1</button>
-    <div class="race" v-if="clients.length > 0">
-      <div class="group" v-for="client in clients" :key="client.id">
-        <span v-if="isMyId(client.id)">👉 </span>
-        <span v-if="!isMyId(client.id)">💣 </span>
-        <progress class="racer" v-bind:value="client.value" max="100" min="0" />
+  <div id="race" class="row justify-content-center gap-3">
+    <button type="button" class="btn btn-outline-primary" v-on:click="increment">
+      +1
+    </button>
+    <div class="group row align-items-start" v-for="client in clients" :key="client.id">
+      <div class="row">
+        <span class="col-1" v-if="isMyId(client.id)">👉 </span>
+        <span class="col-1" v-if="!isMyId(client.id)">💣 </span>
+        <div class="col-11 progress p-0">
+          <div
+            class="progress-bar progress-bar-animated progress-bar-striped"
+            role="progressbar"
+            aria-valuenow="1"
+            aria-valuemin="0"
+            aria-valuemax="100"
+            v-bind:style="valueBar(client.value)"
+          ></div>
+        </div>
       </div>
     </div>
   </div>
@@ -29,6 +40,9 @@ export default {
     isMyId(id) {
       return id === this.$socket.client.id;
     },
+    valueBar(value) {
+      return "width: " + value + "%;";
+    },
   },
   sockets: {
     /*
@@ -44,31 +58,4 @@ export default {
 };
 </script>
 
-<style scoped>
-.race {
-  display: flex;
-  flex-flow: column wrap;
-  align-items: center;
-}
-.group {
-  display: flex;
-  flex-flow: row wrap;
-  align-items: center;
-  justify-items: center;
-}
-.racer {
-  width: 300px;
-  height: 20px;
-  margin: 3px;
-  border: 2px solid black;
-  border-radius: 10px;
-  color: blueviolet;
-}
-button {
-  border-radius: 10px;
-  border: 2px solid black;
-  width: 100px;
-  height: 30px;
-  margin: 10px;
-}
-</style>
+<style></style>

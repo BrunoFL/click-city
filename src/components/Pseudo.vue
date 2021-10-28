@@ -1,8 +1,16 @@
 <template>
-  <div>
-    <span>Pseudo : </span>
-    <input v-model="pseudo" />
-    <button v-on:click="updatePseudo">Valider</button>
+  <div class="row">
+    <div class="input-group mb-3 align-items-center hstack gap-3">
+      <input type="text" class="form-control" v-model="pseudo" />
+      <button
+        type="button"
+        class="btn btn-primary"
+        placeholder="Pseudo"
+        v-on:click="updatePseudo"
+      >
+        Valider
+      </button>
+    </div>
   </div>
 </template>
 
