@@ -3,15 +3,10 @@
     <button v-on:click="increment">+1</button>
 
     <div class="race" v-if="clients.length > 0">
-      <progress
-        class="racer"
-        v-for="client in clients"
-        :key="client.id"
-        v-html="client.id"
-        v-bind:value="client.value"
-        max="100"
-        min="0"
-      />
+      <div v-for="client in clients" :key="client.id">
+        <span v-if="isMyId(client.id)">👉</span>
+        <progress class="racer" v-bind:value="client.value" max="100" min="0" />
+      </div>
     </div>
   </div>
 </template>
@@ -30,6 +25,9 @@ export default {
      */
     increment() {
       this.$socket.client.emit("increment_counter");
+    },
+    isMyId(id) {
+      return id === this.$socket.client.id;
     },
   },
   sockets: {
@@ -53,6 +51,14 @@ export default {
   width: 300px;
   height: 20px;
   margin: 3px;
-  padding: 5px;
+  border: 2px solid black;
+  border-radius: 10px;
+  color: blueviolet;
+}
+button {
+  border-radius: 10px;
+  border: 2px solid black;
+  width: 100px;
+  height: 30px;
 }
 </style>
