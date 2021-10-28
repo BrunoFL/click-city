@@ -1,6 +1,6 @@
 <template>
   <div class="clients">
-    <h3 v-html="'Connected clients'" />
+    <h3 v-html="'Classement'" />
     <span
       v-if="clients.length == 0"
       v-html="'No connected clients.'"
@@ -28,7 +28,6 @@ export default {
      * 👂 Listen to socket events emitted from the socket server
      */
     update_clients(clients) {
-      console.log(clients);
       this.clients = clients;
     },
   },
